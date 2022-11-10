@@ -49,33 +49,34 @@ map.y = `(${stringify(f_Infinity)}[${number(7)}])`;
 const f_filter = makeString("filter");
 
 // function filter() { [native code] }
-map.u = `([][${f_filter}]+([]+[]))[${number(1)}]`;
-map.c = `([][${f_filter}]+([]+[]))[${number(3)}]`;
-map.o = `([][${f_filter}]+([]+[]))[${number(6)}]`;
-map[" "] = `([][${f_filter}]+([]+[]))[${number(8)}]`;
-map["("] = `([][${f_filter}]+([]+[]))[${number(13)}]`;
-map[")"] = `([][${f_filter}]+([]+[]))[${number(14)}]`;
-map["{"] = `([][${f_filter}]+([]+[]))[${number(16)}]`;
-map["["] = `([][${f_filter}]+([]+[]))[${number(18)}]`;
-map.v = `([][${f_filter}]+([]+[]))[${number(23)}]`;
-map["]"] = `([][${f_filter}]+([]+[]))[${number(30)}]`;
-map["}"] = `([][${f_filter}]+([]+[]))[${number(32)}]`;
+map.u = `([][${f_filter}]+[])[${number(1)}]`;
+map.c = `([][${f_filter}]+[])[${number(3)}]`;
+map.o = `([][${f_filter}]+[])[${number(6)}]`;
+map[" "] = `([][${f_filter}]+[])[${number(8)}]`;
+map["("] = `([][${f_filter}]+[])[${number(15)}]`;
+map[")"] = `([][${f_filter}]+[])[${number(16)}]`;
+map["{"] = `([][${f_filter}]+[])[${number(16)}]`;
+map["["] = `([][${f_filter}]+[])[${number(18)}]`;
+map.v = `([][${f_filter}]+[])[${number(23)}]`;
+map["]"] = `([][${f_filter}]+[])[${number(30)}]`;
+map["}"] = `([][${f_filter}]+[])[${number(32)}]`;
 
 const f_constructor = makeString("constructor");
 
 // 1.1e+20
-map["."] = `((+(${numString(11)}+${map.e}+${numString(20)})+[])[${number(1)}])`
-map["+"] = `((+(${numString(11)}+${map.e}+${numString(20)})+[])[${number(4)}])`
+map["."] = `((+(${numString(11)}+${map.e}+${numString(20)})+[])[${number(1)}])`;
+map["+"] = `((+(${numString(11)}+${map.e}+${numString(20)})+[])[${number(4)}])`;
 
-// false0function String() { [native code] }
-map.S = `((${f_false}+[${number(0)}]+([]+[]))[${number(15)}])`
-map.r = `((${f_false}+[${number(0)}]+([]+[]))[${number(17)}])`
-// map.g = `((${f_false}+[${number(0)}]+([]+[]))[${number(20)}])`
-map.g = `(![]+[+[]]+([]+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]`;
+// String
+map.S = `((([]+[])[${makeString("constructor")}]+[])[${number(9)}])`;
+map.g = `((([]+[])[${makeString("constructor")}]+[])[${number(14)}])`;
 
 // <font color="undefined"></font>
-// map["\""] = `(([]+[])[${makeString("fontcolor")}]()[${number(12)}])`
-map["\""] = `([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]]`;
+map["<"] = `((([]+[])[${makeString("fontcolor")}]()+[])[${number(0)}])`;
+map["="] = `((([]+[])[${makeString("fontcolor")}]()+[])[${number(11)}])`;
+map["\""] = `((([]+[])[${makeString("fontcolor")}]()+[])[${number(12)}])`;
+map[">"] = `((([]+[])[${makeString("fontcolor")}]()+[])[${number(23)}])`;
+map["/"] = `((([]+[])[${makeString("fontcolor")}]()+[])[${number(26)}])`;
 
 function number(n) {
   let res = `+[]`;
@@ -117,7 +118,11 @@ function f_function(func) {
   return str;
 }
 
-data = f_function(`console.log("tst")`);
+// data = makeString('console.log("a")');
+data = f_function('console.log("lol git gud 1337 too cool 4 u")');
+
+const fs = require('fs')
+fs.writeFileSync("output.js", data)
 
 console.log(data);
 eval(data);
@@ -129,6 +134,5 @@ eval(data);
 
 /*
   CURRENT PROBLEM: some dumb string issue
-
-  SECONDARY PROBLEMS: `g` and `"` don't compile correctly
 */ 
+
