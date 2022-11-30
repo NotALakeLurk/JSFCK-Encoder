@@ -1,3 +1,3 @@
-# JSFCK Encoder
+# JSFck Encoder
  
-A simple encoder from JS to JSF*ck
+A simple encoder from JS to JSFck
